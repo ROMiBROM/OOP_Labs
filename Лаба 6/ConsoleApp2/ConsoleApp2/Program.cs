@@ -194,8 +194,8 @@ namespace ConsoleApp2
     public class shet : oper_shet
     {
         public int kolshets;
-        public int[] sumshet;
-        public string[] typeshet;
+        public int[] sumshet=new int[20];
+        public string[] typeshet=new string[20];
     }
 
     /// 
@@ -213,9 +213,12 @@ namespace ConsoleApp2
         }
         public int menu()
         {
-            Console.WriteLine($"1. Вычисление общей суммы по счетам заданного клиента\n"+
-                              $"2. Вычисление суммы по всем счетам(положительным)\n"+
-                              $"3. Вычисление суммы по всем счетам(отрицательным)\n");
+            Console.WriteLine(" ");
+            Console.WriteLine($"Меню:\n" +
+                               $"1. Вычисление общей суммы по счетам заданного клиента\n" +
+                               $"2. Вычисление суммы по всем счетам(положительным)\n" +
+                               $"3. Вычисление суммы по всем счетам(отрицательным)\n" +
+                               $"4. Закончить программу");
             return Convert.ToInt32(Console.ReadLine());
         }
         public void Add(shet sh,int kol)
@@ -242,7 +245,7 @@ namespace ConsoleApp2
                 {
                     for (var i = 0; i < ((shet)obj).kolshets; i++)
                     {
-                        sum += ((shet)obj).sumshet[0];
+                        sum += ((shet)obj).sumshet[i];
                     }
                 }
             }
@@ -253,13 +256,19 @@ namespace ConsoleApp2
             int sum = 0;
             foreach (object obj in bk.Elements)
             {
-                    for (var i = 0; i < ((shet)obj).kolshets; i++)
-                    {
-                    if (((shet)obj).sumshet[0] > 0)
-                        sum += ((shet)obj).sumshet[0];
-                    else Console.WriteLine("Нет положительных счетов");
-                    }
+                for (var i = 0; i < ((shet)obj).kolshets; i++)
+                {
+                    if (((shet)obj).sumshet[i] > 0)
+                        sum += ((shet)obj).sumshet[i];
+
+                }
             }
+            Console.WriteLine($"Сумма всех положительных счетов в банке равна:{sum}");
+            if (sum == 0)
+            {
+                Console.WriteLine("Нет положительных счетов");
+            }
+
         }
         public void Sumallneg(bank bk)
         {
@@ -268,11 +277,15 @@ namespace ConsoleApp2
             {
                     for (var i = 0; i < ((shet)obj).kolshets; i++)
                     {
-                        if (((shet)obj).sumshet[0] > 0)
-                            sum += ((shet)obj).sumshet[0];
-                        else Console.WriteLine("Нет отрицательных счетов");
+                        if (((shet)obj).sumshet[i] < 0)
+                            sum += ((shet)obj).sumshet[i];
                     }
               
+            }
+            Console.WriteLine($"Сумма всех отрицательных счетов в банке равна:{sum}");
+            if (sum == 0)
+            {
+                Console.WriteLine("Нет отрицательных счетов");
             }
         }
     }
@@ -283,14 +296,14 @@ namespace ConsoleApp2
            
             sheta sheta = new sheta();
             bank bank1 = new bank();
-            shet sh1 = new shet();
             bool Work = true;
-            bank1.Add(sh1, 3);
+            bank1.Add(new shet(),3);
+            Controller Controller = new Controller();
             do
             {
                 switch (bank1.menu())
                 {
-                    case 1: Console.WriteLine("Выберите клиента:"); int s = Convert.ToInt32(Console.ReadLine()); Controller.SumShetCl(bank1,10); break;
+                    case 1: Console.WriteLine("Выберите клиента:"); int s = Convert.ToInt32(Console.ReadLine()); Controller.SumShetCl(bank1,s); break;
                     case 2: Controller.Sumallpos(bank1); break;
                     case 3: Controller.Sumallneg(bank1); break;
                     case 4: Work = false; break;
