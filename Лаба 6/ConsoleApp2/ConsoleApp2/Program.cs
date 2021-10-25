@@ -196,6 +196,7 @@ namespace ConsoleApp2
         public int kolshets;
         public int[] sumshet=new int[20];
         public string[] typeshet=new string[20];
+        public bool[] tblock = new bool[20];
     }
 
     /// 
@@ -218,7 +219,8 @@ namespace ConsoleApp2
                                $"1. Вычисление общей суммы по счетам заданного клиента\n" +
                                $"2. Вычисление суммы по всем счетам(положительным)\n" +
                                $"3. Вычисление суммы по всем счетам(отрицательным)\n" +
-                               $"4. Закончить программу");
+                               $"4. Смена состояния счета\n" +
+                               $"5. Закончить программу"); 
             return Convert.ToInt32(Console.ReadLine());
         }
         public void Add(shet sh,int kol)
@@ -229,7 +231,9 @@ namespace ConsoleApp2
                 Console.Write($"Введите сумму {i+1} счета:");
                 sh.sumshet[i] = Convert.ToInt32(Console.ReadLine());
                 Console.Write($"Введите тип {i+1} счета:");
-                sh.typeshet[i]= Console.ReadLine();
+                sh.typeshet[i] = Console.ReadLine();
+                Console.WriteLine($"Введите состояние счета(true-разблокированный,false-заблокированный):");
+                sh.tblock[i] = Convert.ToBoolean(Console.ReadLine());
             }
             Elements.Add(sh);
         }
@@ -288,6 +292,35 @@ namespace ConsoleApp2
                 Console.WriteLine("Нет отрицательных счетов");
             }
         }
+        public void chanblock(bank bk, int numcl, int numsh)
+        {
+            bool k = false;
+            foreach (object obj in bk.Elements)
+            {
+                if (obj == bk.Elements[numcl])
+                {
+                    for (var i = 0; i < ((shet)obj).kolshets; i++)
+                    {
+                        if (i == numsh)
+                        {
+                            k = true;
+                            if (((shet)obj).tblock[i] == true)
+                            {
+                                ((shet)obj).tblock[i] = false;
+                                Console.WriteLine($"Счет {i + 1} заблокирован");
+                            }
+                            else
+                            {
+                                ((shet)obj).tblock[i] = true;
+                                Console.WriteLine($"Счет {i + 1} разблокирован");
+                            }
+                        }
+                       
+                    }
+                }
+            }
+             if(k==false) Console.WriteLine($"Нет такого счета у клиента {numcl + 1}");
+        }
     }
     class Program
     {
@@ -306,7 +339,10 @@ namespace ConsoleApp2
                     case 1: Console.WriteLine("Выберите клиента:"); int s = Convert.ToInt32(Console.ReadLine()); Controller.SumShetCl(bank1,s); break;
                     case 2: Controller.Sumallpos(bank1); break;
                     case 3: Controller.Sumallneg(bank1); break;
-                    case 4: Work = false; break;
+                    case 4: Console.WriteLine("Выберите клиента:"); int k = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Выберите счет клиента:"); int e = Convert.ToInt32(Console.ReadLine());
+                        Controller.chanblock(bank1,k,e); break;
+                    case 5: Work = false; break;
                     default: Console.WriteLine("Некорректно введенные данные!"); break;
                 }
             } while (Work);
