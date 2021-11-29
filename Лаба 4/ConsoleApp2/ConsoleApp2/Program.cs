@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-   public class Owner
+    public class Owner
     {
         public string name;
         public string organization;
@@ -16,6 +16,7 @@ namespace ConsoleApp2
     {
         private Owner owner = new Owner { name = "Роман", organization = "BSTU", id = 1 };
         private Date date = new Date { date = (DateTime.Now).ToString() };
+       
         public static MYList<T> operator +(MYList<T> a, T b)
         {
             MYList<T> result = new MYList<T>();
@@ -66,7 +67,7 @@ namespace ConsoleApp2
         {
             public string date;
         }
-       
+
     }
     public static class StaticOperation
     {
@@ -128,7 +129,7 @@ namespace ConsoleApp2
             MYList<int> list1 = new MYList<int>() { 1, 2, 3, 45 };
             MYList<int> list2 = new MYList<int>() { 1, 4, 3, 6 };
 
-            list2 = list2 + 9;
+            list2 =list2 + 9;
             list1 = list1--;
             foreach(var item in list2)
             {

@@ -257,3 +257,129 @@ namespace ConsoleApp1
         }
     }
 }
+/*
+ using ConsoleApp2;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // 1 Вариант
+            //1
+            //a)Вывести максимально допустимое число char
+            Console.WriteLine("1 А):");
+            Console.WriteLine((int)char.MaxValue);//перевел макс размер в int
+            Console.WriteLine(" ");//просто отступ
+            //б)Ввести строку,содержащую число, конвертировать в целое число
+            Console.WriteLine("1 Б):");
+            Console.WriteLine("Введите число в строку:");
+            string str;
+            str = Console.ReadLine();//вводим строку в консоли
+            var result = Int32.Parse(str);//перевод из string в int
+            Console.WriteLine(result);
+            Console.WriteLine(" ");
+
+            //2 Создать класс Time с автоматич. свойствами для часов , минут и секунд .
+            Time t1 = new Time(23, 59, 59);
+            t1.Print(t1);
+            Time t2 = new Time(0, 59, 59);
+            t2.Print(t2);
+            t2.Poslanie = t2.ToString();
+            Console.WriteLine(t2 > t1);
+            Console.WriteLine(t2.Poslanie);
+            //3 
+
+        }
+
+    }
+    //2
+    public class Time
+    {
+        public int Hours { get; set; }
+        public int Minutes { get; set; }
+        public int Seconds { get; set; }
+        public string Poslanie { get; set; }
+        public Time(int hours, int minutes, int seconds)
+        {
+            if (hours <= 23 && minutes <= 59 && seconds <= 59)
+            {
+                if (hours >= 0 && minutes >= 0 && seconds >= 0)
+                {
+                    Hours = hours;
+                    Minutes = minutes;
+                    Seconds = seconds;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка записи");
+                }
+            }
+
+        }
+        public Time()
+        {
+
+        }
+        public void Print(Time t1)
+        {
+            if (t1.Hours >= 12 && t1.Hours < 24)
+                Console.WriteLine($"Время : {t1.Hours}:{t1.Minutes}:{t1.Seconds} {time.PM}");
+            else
+                Console.WriteLine($"Время : {t1.Hours}:{t1.Minutes}:{t1.Seconds} {time.AM}");
+        }
+        public static bool operator <(Time t1, Time t2)
+        {
+            if (t2.Hours < t1.Hours && t2.Minutes < t1.Minutes && t2.Seconds < t1.Seconds)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool operator >(Time t1, Time t2)
+        {
+            if (t2.Hours > t1.Hours && t2.Minutes > t1.Minutes && t2.Seconds > t1.Seconds)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public override string ToString()
+        {
+            return "Время-самый ценный ресурс";
+        }
+    }
+    enum time
+    {
+        PM,
+        AM
+    }
+    //3
+    public class FullTime : Time, ICheck
+    {
+
+
+        void ICheck.Check()
+        {
+            throw new NotImplementedException();
+        }
+    }
+    interface ICheck
+    {
+        void Check();
+    }
+}
+*/   
+
