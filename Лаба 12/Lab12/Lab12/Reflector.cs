@@ -15,7 +15,7 @@ namespace Lab12
         public static void AssemblyName(object obj) //  класс, хранящий информацию о сборке
         {
             Type type = obj.GetType();
-            string Info = "Имя сборки: " + type.Name + '\n' + "--------------------------\n";
+            string Info = "Имя сборки: " + Assembly.GetExecutingAssembly() + '\n' + "--------------------------\n";
             File.AppendAllText(Path + PathName, Info);
         }
          public static void PublicContructors(object obj)

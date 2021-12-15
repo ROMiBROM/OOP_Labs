@@ -72,3 +72,77 @@ GetHashCode
 GetType
 ToString
 ------------------------
+Имя сборки: Lab12, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--------------------------
+Поля:
+id
+Count_suit
+price
+count
+pass
+
+Свойства: 
+Exampleset
+Punktnaz
+Number
+Timeotp
+Kolkupe
+Kolobj
+Kolplaz
+Kolluks
+------------------------------------
+Реализованные интерфейсы: отсутствуют
+-------------------------
+Методы с типом параметра Boolean: отсутствут
+-----------------------------------
+Есть ли публичные конструкторы: - да
+-------------------------
+Публичные методы: 
+set_Exampleset
+get_Punktnaz
+set_Punktnaz
+get_Number
+set_Number
+get_Timeotp
+set_Timeotp
+get_Kolkupe
+set_Kolkupe
+get_Kolobj
+set_Kolobj
+get_Kolplaz
+set_Kolplaz
+get_Kolluks
+set_Kolluks
+mainvivod
+Info
+Count
+Equals
+GetHashCode
+GetType
+ToString
+------------------------
+Имя сборки: Lab12, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+--------------------------
+Поля: отсутствуют
+
+Свойства: 
+отсутствуют
+------------------------------------
+Реализованные интерфейсы: отсутствуют
+-------------------------
+Методы с типом параметра Int32: отсутствут
+-----------------------------------
+Есть ли публичные конструкторы: - да
+-------------------------
+Публичные методы: 
+add_Upgrade
+remove_Upgrade
+add_Work
+remove_Work
+upgrade
+work
+Equals
+GetHashCode
+GetType
+ToString
+------------------------
